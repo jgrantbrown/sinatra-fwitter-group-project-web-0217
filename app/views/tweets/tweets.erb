@@ -1,0 +1,10 @@
+
+
+<h1> A list of Tweets</h1>
+<ol>
+<% @tweets.each do |tweet| %>
+<li><%= tweet.content %><a href='/tweets/<%= tweet.id %>'>Show More</a></li>
+<% end %>
+</ol>
+
+<h2><a href='/tweets/new'> Add a Tweet </a></h2>

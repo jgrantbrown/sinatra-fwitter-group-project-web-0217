@@ -64,6 +64,7 @@ describe ApplicationController do
         :email => "skittles@aol.com",
         :password => "rainbows"
       }
+
       post '/signup', params
       session = {}
       session[:user_id] = user.id
