@@ -3,8 +3,8 @@
 <form method="POST" action=/tweets/<%= @tweet.id %>>
   <input type="hidden" name="_method" value="PATCH">
   <label> Edit Your message</label>
-  <p><textarea value="HERE" type='text' name='tweet[content]' ><%= @tweet.content %></textarea>
+  <p><textarea value="HERE" type='text' name='tweet[content]' id="content" ><%= @tweet.content %></textarea>
   </p>
 
-  <input type="submit" value="Update Tweet">
+  <input type="submit" value="Update Tweet" id="Update Tweet">
 </form>

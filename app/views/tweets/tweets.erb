@@ -1,10 +1,22 @@
 
+<h1>Welcome, to Fwitter </h1>
+<h1> A list of All Tweets</h1>
+  <ol>
+    <% @tweets.each do |tweet| %>
 
-<h1> A list of Tweets</h1>
-<ol>
-<% @tweets.each do |tweet| %>
-<li><%= tweet.content %><a href='/tweets/<%= tweet.id %>'>Show More</a></li>
-<% end %>
-</ol>
+        <li><%= tweet.content %>
+            By: <%= tweet.user.username%><a href='/users/<%= tweet.user.slug %>'> my page</a>
+            <% if tweet.user_id == session[:user_id] %>
+                <a href="/tweets/<%= tweet.id %>/edit"> Edit</a>
+                <form method="POST" action='/tweets/<%= tweet.id %>/delete'>
+                  <input name="_method" type="hidden" value="delete">
+                  <input type='submit' value='delete'>
+                </form>
+            <% end %>
+        </li>
+
+    <% end %>
+
+  </ol>
 
 <h2><a href='/tweets/new'> Add a Tweet </a></h2>

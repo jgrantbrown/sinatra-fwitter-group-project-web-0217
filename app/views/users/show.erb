@@ -1,6 +1,28 @@
-<h1> <%= @user.username %><h1>
-<button><a href='/tweets/new'>Add A Tweet</a></button>
-<h2> Tweets by you: </h2>
+
+
+<% if @user.id == session[:user_id] %>
+    <h1> <%= @user.username.capitalize %> this are your Tweets!!<h1>
+  <% end %>
+
+<h2> Tweets by <%= @user.username %>:
+  </h2>
+
 <ol>
-<li></li>
+  <% @user.tweets.each do |tweet| %>
+
+      <li><%= tweet.content %> By: <%= tweet.user.username%>
+
+          <% if @user.id == session[:user_id] %>
+            <h2><a href='/tweets/new'> Add a Tweet </a></h2>
+              <a href="/tweets/<%= tweet.id %>/edit"> Edit</a>
+              <form method="POST" action='/tweets/<%= tweet.id %>/delete'>
+                  <input name="_method" type="hidden" value="delete">
+                <button>  <input type='submit' value='Delete Tweet' id="Delete Tweet"></button>
+                </form>
+            <% end %>
+        </li>
+
+
+  <% end %>
+
 </ol>

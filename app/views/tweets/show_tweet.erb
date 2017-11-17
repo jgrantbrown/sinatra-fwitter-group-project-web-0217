@@ -1,8 +1,11 @@
-<h1> Showing this Tweet </h1>
-<p><%= @tweet.id %>. <%= @tweet.content %>
-<a href="/tweets/<%= @tweet.id %>/edit"> Edit</a>
-<form method="POST" action='/tweets/<%= @tweet.id %>/delete'>
-  <input name="_method" type="hidden" value="delete">
-  <input type='submit' value='delete'>
-</form>
-</p>
+<h1> Showing your tweeting!</h1>
+<p><%= @tweet.content %> By: <%= @tweet.user.username %></p>
+
+<% if @tweet.user_id == session[:user_id] %>
+  <a href="/tweets/<%= @tweet.id %>/edit"> Edit</a>
+  <form method="POST" action='/tweets/<%= @tweet.id %>/delete'>
+    <input name="_method" type="hidden" value="delete">
+    <input type='submit' value='delete'>
+  </form>
+
+<% end %>
