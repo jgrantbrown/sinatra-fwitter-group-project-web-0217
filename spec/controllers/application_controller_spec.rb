@@ -174,6 +174,8 @@ describe ApplicationController do
         fill_in(:username, :with => "becky567")
         fill_in(:password, :with => "kittens")
         click_button 'submit'
+
+
         visit "/tweets"
         expect(page.body).to include(tweet1.content)
         expect(page.body).to include(tweet2.content)
@@ -367,6 +369,7 @@ describe ApplicationController do
         fill_in(:content, :with => "")
 
         click_button 'submit'
+        
         expect(Tweet.find_by(:content => "i love tweeting")).to be(nil)
         expect(page.current_path).to eq("/tweets/1/edit")
       end

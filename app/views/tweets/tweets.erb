@@ -5,15 +5,16 @@
     <% @tweets.each do |tweet| %>
 
         <li><%= tweet.content %>
-            By: <%= tweet.user.username%><a href='/users/<%= tweet.user.slug %>'> my page</a>
-            <% if tweet.user_id == session[:user_id] %>
-                <a href="/tweets/<%= tweet.id %>/edit"> Edit</a>
-                <form method="POST" action='/tweets/<%= tweet.id %>/delete'>
-                  <input name="_method" type="hidden" value="delete">
-                  <input type='submit' value='delete'>
-                </form>
-            <% end %>
-        </li>
+
+
+          </li>
+        <% if tweet.user_id == session[:user_id] %>
+            <a href="/tweets/<%= tweet.id %>/edit"> Edit</a>
+            <form method="POST" action='/tweets/<%= tweet.id %>/delete'>
+              <input name="_method" type="hidden" value="delete">
+              <input type="submit" value="Delete Tweet" id="Delete Tweet">
+            </form>
+        <% end %>
 
     <% end %>
 
